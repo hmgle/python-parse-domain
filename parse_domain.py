@@ -1578,7 +1578,7 @@ tlds = set((
 
 
 if __name__=="__main__":
-    for item in ['http://something.unknown','http://a.b.c.something.unknown','http://something','http://google.com','http://a.b.c.d.e.google.com','http://something.uk','http://aa.bb.cc.dd.ee.ff.gg.guardian.co.uk','http://guardian.co.uk','http://www.guardian.co.uk','http://www.google.com','http://wikipedia.org','http://www.wikipedia.org','',None,'whatever']:
+    for item in ['http://something.unknown','http://a.b.c.something.unknown','http://something','http://google.com','http://a.b.c.d.e.google.com','http://something.uk','http://aa.bb.cc.dd.ee.ff.gg.guardian.co.uk','http://guardian.co.uk','http://www.guardian.co.uk','http://www.google.com','http://wikipedia.org','http://www.wikipedia.org','http://www.example.com:1234','',None,'whatever']:
         for level in range(0,5):
             print "url=%s, levels=%s => %s" % (item, level, parse_domain(item,level))
 
