@@ -8,33 +8,33 @@ def parse_domain(url, levels=2):
     """
     if levels < 1 or not url:
         return None
-        
+
     # Parse the hostname from the url
     parsed = urlparse(url)
     hostname = getattr(parsed,'netloc',url)
-    
+
     partial_domains = []
     partial_domain = ""
     for section in reversed(hostname.split(".")):
         partial_domain = "." + section + partial_domain
         partial_domains.append(partial_domain)
-        
+
     # Find the longest matching TLD, recording its index
     tld_idx = 0
     for idx, item in enumerate(partial_domains):
         if item in tlds:
             tld_idx = idx
-        
+
     # Add the desired number of levels to the tld index,
     # counting the TLD itself as the first level
     try:
         domain = partial_domains[tld_idx + levels - 1]
     except IndexError:
         domain = partial_domains[-1]
-    
+
     # Remove the initial dot
     return domain[1:]
-        
+
 tlds = set((
     '.2000.hu',
     '.ab.ca',
