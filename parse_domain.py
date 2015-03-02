@@ -11,10 +11,12 @@ def parse_domain(url, levels=2):
 
     # Parse the hostname from the url
     parsed = urlparse(url)
-    hostname = getattr(parsed,'netloc',url)
+    hostname = getattr(parsed,'hostname',url)
 
     partial_domains = []
     partial_domain = ""
+    if hostname is None:
+        return None
     for section in reversed(hostname.split(".")):
         partial_domain = "." + section + partial_domain
         partial_domains.append(partial_domain)
